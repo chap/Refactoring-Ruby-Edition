@@ -2,6 +2,6 @@ I'm working through the exercises contained in Refactoring Ruby Edition by Jay F
 
 Available here: http://www.amazon.com/Refactoring-Ruby-Jay-Fields/dp/0321603508
 
-Rather than keep seperate files for each step in the refactoring, I have committed each step separately.
+Rather than keep separate files for each step in the refactoring, "I have committed each step separately":http://github.com/chap/Refactoring-Ruby-Edition/commits/master
 
 All code belongs to the authors of the book, so fork, share, steal, mock freely.
