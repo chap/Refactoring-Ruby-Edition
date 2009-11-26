@@ -34,6 +34,15 @@ class Movie
 	end
 end
 
+class RegularPrice
+end
+
+class NewReleasePrice
+end
+
+class ChildrensPrice
+end
+
 class Rental
 	attr_reader :movie, :days_rented
 	
