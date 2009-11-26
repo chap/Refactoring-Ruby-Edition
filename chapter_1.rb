@@ -64,6 +64,20 @@ class Customer
 		result
 	end
 	
+	def html_statement
+		result = "<h1>Rentals for <em>#{@name}</em></h1><p>\n"
+		@rentals.each do |element|
+			# show figures for this rental					
+			result += "\t" + element.movie.title + ": " + element.charge.to_s + "<br>\n"
+		end
+		# add footer lines
+		result += "<p>You owe <em>#{total_charge}</em></p>\n"
+		result += "<p>On this rental you earned " +
+							"<em>#{total_frequent_renter_points}</em> " +
+							"frequent renter points</p>"
+		result
+	end
+	
 	private
 	
 	def total_charge
@@ -111,5 +125,13 @@ class VideoRentalTest < Test::Unit::TestCase
 								 "\tYou've Got Mail\t45\n"           +
 								 "Amount owed is 53.0\n"             +
 								 "You earned 4 frequent renter points", customer.statement
+		
+		assert_equal "<h1>Rentals for <em>Chap</em></h1><p>\n" + 
+								 "\tJoe Versus the Volcano: 6.5<br>\n"     +
+								 "\tSleepless in Seattle: 1.5<br>\n"       +
+								 "\tYou've Got Mail: 45<br>\n"             +
+								 "<p>You owe <em>53.0</em></p>\n"          +
+								"<p>On this rental you earned "            +
+								"<em>4</em> frequent renter points</p>", customer.html_statement
 	end
 end
