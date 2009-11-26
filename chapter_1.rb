@@ -4,19 +4,10 @@ class Movie
 	CHILDRENS = 2
 	
 	attr_reader :title
-	attr_reader :price_code
+	attr_writer :price
 	
 	def initialize(title, the_price_code)
-		@title, self.price_code = title, the_price_code
-	end
-	
-	def price_code=(value)
-		@price_code = value
-		@price = case price_code
-		when REGULAR: RegularPrice.new
-		when NEW_RELEASE: NewReleasePrice.new
-		when CHILDRENS: ChildrensPrice.new
-		end
+		@title, self.price = title, the_price_code
 	end
 	
 	def charge(days_rented)
@@ -136,7 +127,7 @@ class VideoRentalTest < Test::Unit::TestCase
 	
 	def test_statement
 		customer = Customer.new('Chap')
-		movie1 = Movie.new('Joe Versus the Volcano', Movie::REGULAR)
+		movie1 = Movie.new('Joe Versus the Volcano', RegularPrice.new)
 		rental1 = Rental.new(movie1, 5)
 		customer.add_rental(rental1)
 				
@@ -146,7 +137,7 @@ class VideoRentalTest < Test::Unit::TestCase
 								 "You earned 1 frequent renter points", customer.statement
 		
 		
-		movie2 = Movie.new('Sleepless in Seattle', Movie::CHILDRENS)
+		movie2 = Movie.new('Sleepless in Seattle', ChildrensPrice.new)
 		rental2 = Rental.new(movie2, 1)
 		customer.add_rental(rental2)
 				
@@ -157,7 +148,7 @@ class VideoRentalTest < Test::Unit::TestCase
 								 "You earned 2 frequent renter points", customer.statement
 		
 		
-		movie3 = Movie.new('You\'ve Got Mail', Movie::NEW_RELEASE)
+		movie3 = Movie.new('You\'ve Got Mail', NewReleasePrice.new)
 		rental3 = Rental.new(movie3, 15)
 		customer.add_rental(rental3)
 
