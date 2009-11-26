@@ -1,0 +1,7 @@
+I'm working through the exercises contained in Refactoring Ruby Edition by Jay Fields, Shane Harvie, Martin Fowler, and Kent Beck.
+
+Available here: http://www.amazon.com/Refactoring-Ruby-Jay-Fields/dp/0321603508
+
+Rather than keep seperate files for each step in the refactoring, I have committed each step separately.
+
+All code belongs to the authors of the book, so fork, share, steal, mock freely.
