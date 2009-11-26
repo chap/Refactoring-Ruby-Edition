@@ -69,11 +69,7 @@ class Customer
 	private
 	
 	def total_charge
-		result = 0
-		@rentals.each do |element|
-			result += element.charge
-		end
-		result
+		@rentals.inject(0) {|sum, element| sum + element.charge}
 	end
 end
 
